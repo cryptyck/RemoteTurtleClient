@@ -2,7 +2,7 @@ local ws = assert(http.websocket("ws://turtlewebsocks.ddns.net:8880"))
 
 ws.send("SYN")
 
-_G.CLIENT_ID, failure = ws.receive()
+_G.CLIENT_ID, failure = textutils.unserializeJSON(ws.receive())["ClientID"]
 
 term.setTextColor(colors.cyan)
 print("Connected as client " .. _G.CLIENT_ID)

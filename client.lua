@@ -25,6 +25,33 @@ while true do
 
     if serializedJSON["message"] == "forward" then
         turtle.forward()
+    elseif serializedJSON["message"] == "backward" then
+        turtle.back()
+    elseif serializedJSON["message"] == "left" then
+        turtle.turnLeft()
+    elseif serializedJSON["message"] == "right" then
+        turtle.turnRight()
+    elseif serializedJSON["message"] == "exit" then
+        exit()
+    elseif serializedJSON["message"] == "shutdown" then
+        os.shutdown()
+    elseif serializedJSON["message"] == "suckdown" then
+        turtle.suckDown()
+    elseif serializedJSON["message"] == "suckup" then
+        turtle.suckUp()
+    elseif serializedJSON["message"] == "suck" then
+        turtle.suck()
+    elseif serializedJSON["message"] == "attack" then
+        turtle.attack()
+    elseif serializedJSON["message"] == "attackup" then
+        turtle.attackUp()
+    elseif serializedJSON["message"] == "attackdown" then
+        turtle.attackDown()
+    elseif serializedJSON["message"] == "getfuel" then
+        local fuel = turtle.getFuelLevel()
+        ws.send(string.format('{"ClientID": "%s", "message": "%s"}', "EXE", tostring(fuel)))
+    elseif serializedJSON["message"] == "setname" then
+        os.setComputerLabel(serializedJSON["args"][0])
     end
 end
 

@@ -4,6 +4,8 @@ ws.send("SYN")
 
 _G.CLIENT_ID, failure = ws.receive()
 
+warn("Connected as client " .. _G.CLIENT_ID)
+
 if failure then
     error("Error receiving Client ID!")
     exit()
